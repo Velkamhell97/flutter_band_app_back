@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
+const { socketController } = require('../sockets/controller');
 
 class Server {
 
@@ -9,14 +10,24 @@ class Server {
     this.port = process.env.PORT;
 
     this.server = require('http').createServer(this.app);
+    this.io = require('socket.io')(this.server);
 
     this.middlewares();
+
+    this.sockets();
   }
 
   middlewares() {
     this.app.use(cors());
 
     this.app.use(express.json());
+
+    this.app.use(express.static('public'))
+  }
+
+  sockets() {
+    //-Controllador para cuando los clientes se conecten al servidor
+    this.io.on('connection', (stream) => socketController(stream, this.io))
   }
 
   listen() {
