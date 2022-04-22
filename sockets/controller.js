@@ -7,13 +7,17 @@ const Bands = require('../models/bands');
 //-por eso se podria decir que esto es una medio persistencia, tambien se podria trabajar con json
 const bands = new Bands();
 
-bands.addBand(new Band('Goku'))
+// bands.addBand(new Band('Goku'))
 
 //-Cuando un cliente (puede ser una pagina o un telefono) se conecta al server se pasa por este metodo
 const socketController = async (client = new Socket(), server = new Server()) => {
   console.log('Client Connected (From Server)');
 
   client.emit('get-bands', bands.getBands())
+
+  client.on('get-bands', (_) => {
+    server.emit('get-bands', bands.getBands())
+  })
 
   client.on('add-band', (name) => {
     bands.addBand(new Band(name));
