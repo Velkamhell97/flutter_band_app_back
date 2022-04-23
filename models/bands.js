@@ -20,7 +20,7 @@ class Bands {
   
   voteBand(id = ''){
     /// Forma 1
-    index = this.bands.findIndex(band => band.id == id);
+    const index = this.bands.findIndex(band => band.id == id);
     this.bands[index].votes++;
 
     /// Forma 2 
