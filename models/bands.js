@@ -18,21 +18,20 @@ class Bands {
     return this.bands;
   }
   
-  //-Quizas tambien se podria pasar por index pero no es tan seguro
   voteBand(id = ''){
-    //-Forma 1
-    // index = this.bands.findIndex(band => band.id == id);
-    // this.bands[index].votes++;
+    /// Forma 1
+    index = this.bands.findIndex(band => band.id == id);
+    this.bands[index].votes++;
 
-    //-Forma 2 
-    this.bands = this.bands.map(band => {
-      if(band.id == id){
-        band.votes++
-        return band //Se retorna el mismo objeto pero aumentado
-      } else {
-        return band //Se retorna el mismo objeto pero sin modificar
-      }
-    })    
+    /// Forma 2 
+    // this.bands = this.bands.map(band => {
+    //   if(band.id == id){
+    //     band.votes++
+    //     return band /// Se retorna el mismo objeto pero aumentado
+    //   } else {
+    //     return band /// Se retorna el mismo objeto pero sin modificar
+    //   }
+    // })    
   }
 }
 

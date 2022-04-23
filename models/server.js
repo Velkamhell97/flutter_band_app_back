@@ -26,7 +26,7 @@ class Server {
   }
 
   sockets() {
-    //-Controllador para cuando los clientes se conecten al servidor
+    /// Controllador para cuando los clientes se conecten al servidor
     this.io.on('connection', (stream) => socketController(stream, this.io))
   }
 
