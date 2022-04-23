@@ -39,10 +39,6 @@ const socketController = async (client = new Socket(), server = new Server()) =>
     /// Para ver formateado el objeto utilizamos el %O
     console.log(`Message From Client %O`, payload);
 
-    //-Este mensaje es broadcast, a todos, es decir que se va ejecutar el on 'message', del cliente asi
-    //-este lo haya enviado
-    // server.emit('message', { server: 'Velkamhell'})
-
     /// Envia solo al emisor pero no a los demas (automensaje)
     // client.emit('message', payload);
 

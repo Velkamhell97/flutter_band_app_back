@@ -18,6 +18,7 @@ class Server {
   }
 
   middlewares() {
+    /// Para los middlewares seguimos usando el app
     this.app.use(cors());
 
     this.app.use(express.json());
@@ -31,6 +32,7 @@ class Server {
   }
 
   listen() {
+    /// Para el listen usamos el server
     this.server.listen(this.port, () => {
       console.log(`Server app listening at ${this.port}`);
     })
